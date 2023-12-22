@@ -6,17 +6,27 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Gajah extends Actor
+public class Gajah extends Actor implements DapatCaption
 {
-    private String text;
     private Kata kata;
     private boolean spawnedKata = false;
-    private boolean remove = false;
+    private boolean hapus = false;
     
-    public boolean bandingkanKata(String kataLain) {
-        return kata.getKata().equals(kataLain);
+    // method untuk membandingkan sebuah kata
+    @Override
+    public boolean bandingkanCaption(String kataLain) {
+        return kata.getKata().equalsIgnoreCase(kataLain);
     }
     
+    @Override
+    public void spawnCaption() {
+        if (spawnedKata == false) {
+            spawnedKata = true;
+            getWorld().addObject(kata, getX(), getY() + 35);
+        }
+    }
+    
+    // getter untuk posisi x dan y
     public int ambilX() {
         return getX();
     }
@@ -26,28 +36,42 @@ public class Gajah extends Actor
     }
     
     public Gajah() {
+        // inisialisasi objek kata
         kata = new Kata();
     }
     
-    public void activeToRemove() {
-        remove = true;
+    // method untuk mengatur objek ini boleh di hapus
+    public void bolehkanUntukDiHapus() {
+        hapus = true;
     }
     
-    /**
-     * Act - do whatever the Gajah wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act()
     {
+        // berpindah
         move(-1);
-         
-        if (spawnedKata == false) {
-            spawnedKata = true;
-            getWorld().addObject(kata, getX(), getY() + 35);
+        
+        // spawn kata
+        spawnCaption();
+        
+        if (isAtEdge()) {
+            MyWorld world = (MyWorld)getWorld();
+            world.setNyawa(world.getNyawa() - 1);
+            if(world.getNyawa() == 0){
+                ((MyWorld)getWorld()).displayStatus();
+                getWorld().showText("GAME OVER", getWorld().getWidth()/2, getWorld().getHeight()/2);
+                Greenfoot.stop();
+            }  
+            world.removeObject(kata);
+            world.removeObject(this);
+            return;
         }
         
+        // ambil peluru yang menyentuh ufo
         Actor p = getOneIntersectingObject(Peluru.class);
-        if (p != null && p instanceof Peluru && remove == true) {
+        // jika ada dan ufo sudah boleh di hapus
+        if (p != null && p instanceof Peluru && hapus == true) {
+            MyWorld world = (MyWorld)getWorld();
+            world.setSkor(1000);
             getWorld().removeObject(p); // hapus peluru
             getWorld().removeObject(kata); // hapus kata
             getWorld().removeObject(this); // hapus gajah ini

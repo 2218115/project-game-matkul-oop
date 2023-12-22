@@ -13,15 +13,16 @@ public class Rocket extends Actor
     private String kataDiketik = "";
     private int counter = 0;
     
-    
     public void act()
     {
+        ((MyWorld)getWorld()).displayStatus();
+        
         String key = Greenfoot.getKey();
         if (key != null) {
             
             if (key.length() == 1) {
                 kataDiketik += key;
-            } else if (key.equals("backspace")) {
+            } else if (key.equals("backspace") && kataDiketik.length() > 0) {
                 kataDiketik = kataDiketik.substring(0, kataDiketik.length() - 1);
             }
         }
@@ -36,7 +37,7 @@ public class Rocket extends Actor
         // ambil semua gajah
         List<Gajah> gajahs = getWorld().getObjects(Gajah.class);
         for (Gajah g : gajahs) {
-            if (g.bandingkanKata(kataDiketik)) {
+            if (g.bandingkanCaption(kataDiketik)) {
                 kataDiketik = "";
                 double dX = getX() - g.ambilX();
                 double dY = getY() - g.ambilY();
@@ -48,7 +49,7 @@ public class Rocket extends Actor
                 // spawn peluru
                 getWorld().addObject(new Peluru(getX(), getY(), -normalX * kecepatan, -normalY * kecepatan), getX(), getY());
                 // aktifkan bahwa gajah yang target ini sudah bisa untuk dihapus
-                g.activeToRemove();
+                g.bolehkanUntukDiHapus();
             }
         }
     }

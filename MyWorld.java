@@ -1,39 +1,45 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class MyWorld here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class MyWorld extends World
 {
+    private int nyawa = 3;
+    private int skor = 0;
+    
+    public void setNyawa(int nyawa){
+        this.nyawa = nyawa--;
+    }
+    
+    public void setSkor(int skor){
+        this.skor += skor;
+    }
+    
+    public int getNyawa(){
+        return nyawa;
+    }
+    
+    public int getSkor(){
+        return skor;
+    }
+    
+    public void displayStatus() {
+        showText("Nyawa: " + getNyawa(), 100, 32);
+        showText("Skor: " + getSkor(), getWidth() - 200, 32);
+    }
+
     public static String[] kataIndonesia = {
-            "rumah", "mobil", "kucing", "sekolah", "buku", "komputer", "guru", "pelajar", "senang", "belajar",
-            "kopi", "makan", "minum", "hujan", "angin", "matahari", "pohon", "bunga", "udara", "laut",
-            "gunung", "negeri", "negara", "seratus", "dua ratus", "tiga ratus", "empat ratus", "lima ratus",
-            "enam ratus", "tujuh ratus", "delapan ratus", "sembilan ratus", "seribu", "kata", "bahasa", "indonesia",
-            "orang", "keluarga", "teman", "musik", "film", "television", "internet", "komunikasi", "telepon", "pesan",
-            "pakaian", "sepatu", "topi", "mata", "hidung", "mulut", "telinga", "jantung", "otak", "tulang",
-            "otot", "jari", "kaki", "tangan", "pintu", "jendela", "kunci", "lampu", "meja", "kursi",
-            "kamar", "dapur", "mandi", "tempat tidur", "sepatu", "sendal", "topi", "baju", "celana", "jaket",
-            "kacamata", "jam", "kalender", "uang", "dompet", "kertas", "pensil", "penghapus", "buku catatan", "kamera",
-            "layar", "keyboard", "mouse", "speaker", "mikrofon", "gitar", "piano", "drum", "saxophone", "trumpet",
-            "pelangi", "awan", "bintang", "bulan", "planet", "galaksi", "api", "air", "bumi", "angkasa",
-            "perpustakaan", "museum", "taman", "rumput", "bola", "sepeda", "kapal", "pesawat", "mobil listrik", "kereta api",
-            "taksi", "bus", "motor", "sepeda motor", "berenang", "berlari", "bersepeda", "bermain", "berdoa", "bermeditasi",
-            "bernyanyi", "menari", "bermain game", "memasak", "membaca", "menulis", "menggambar", "melukis", "berbicara", "mendengarkan",
-            "bertanya", "menjawab", "menulis surat", "mengirim email", "menelepon", "mengirim pesan", "berfoto", "berlibur", "bepergian", "bertualang"
+           "Hari", "Bumi", "Mata", "Laut", "Rumah", "Tari", "Gila", "Jadi", "Sapi", "Padi",
+            "Raja", "Tahu", "Cuci", "Kali", "Jala", "Bola", "Kura", "Kopi", "Ikan", "Api",
+            "Pena", "Tiga", "Emas", "Warna", "Lang", "Kaca", "Kuda", "Raja", "Tuli", "Enak",
+            "Liar", "Gigi", "Lima", "Besi", "Kaos", "Paku", "Hati", "Duri", "Suka", "Mata",
+            "Tari", "Lari", "Duri", "Kaca", "Paku", "Rusa", "Menu", "Batu", "Pena", "Tali",
+            "Gula", "Kaus", "Nasi", "Kopi", "Tuna", "Ikan", "Isti", "Aksi", "Seja", "Duka",
+            "Pena", "Baja", "Raja", "Tapi", "Roda", "Awan", "Aksi", "Padi", "Baja", "Kopi"
     };
     
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
     public MyWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1280, 720, 1);
         addObject(new Rocket(), 64, getHeight() / 2);
+        displayStatus();
     }
 }

@@ -1,6 +1,6 @@
 #Greenfoot project file
 class.Gajah.image=monster_1.png
-class.MyWorld.image=space1.jpg
+class.MyWorld.image=background2.jpg
 class.Peluru.image=peluru.png
 class.Rocket.image=pesawat.png
 dependency1.from=MyWorld
@@ -21,10 +21,10 @@ dependency5.type=UsesDependency
 dependency6.from=Rocket
 dependency6.to=Peluru
 dependency6.type=UsesDependency
-editor.fx.0.height=1096
-editor.fx.0.width=1936
-editor.fx.0.x=-8
-editor.fx.0.y=-8
+editor.fx.0.height=716
+editor.fx.0.width=816
+editor.fx.0.x=688
+editor.fx.0.y=382
 height=1096
 package.numDependencies=6
 package.numTargets=5
