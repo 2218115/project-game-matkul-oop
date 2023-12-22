@@ -7,4 +7,8 @@ Disusun Oleh:
 3. Fathur Rizky
 4. M. Mahairul Makrus Ali
 
-Terimakasih untuk assets-assets  (itch.io)[https://itch.io] 
+Terimakasih untuk assets-assets  [https://itch.io](https://itch.io)
+
+## Tangkapan Layar dari Game
+
+
