@@ -13,8 +13,9 @@ public class Rocket extends Actor
     private String kataDiketik = "";
     private int counter = 0;
     
+    
     public void act()
-    {
+    {    
         ((MyWorld)getWorld()).displayStatus();
         
         String key = Greenfoot.getKey();

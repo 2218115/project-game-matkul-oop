@@ -12,7 +12,7 @@ public class Gajah extends Actor implements DapatCaption
     private boolean spawnedKata = false;
     private boolean hapus = false;
     private GreenfootSound suara = new GreenfootSound("explosion.wav");
-    
+
     // method untuk membandingkan sebuah kata
     @Override
     public boolean bandingkanCaption(String kataLain) {

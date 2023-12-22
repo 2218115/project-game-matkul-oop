@@ -11,4 +11,4 @@ Terimakasih untuk assets-assets  [https://itch.io](https://itch.io)
 
 ## Tangkapan Layar dari Game
 
-
+![./tangkapan_layar/demo.gif](demo.gif gagal dimuat)
