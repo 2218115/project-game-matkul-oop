@@ -11,6 +11,7 @@ public class Gajah extends Actor implements DapatCaption
     private Kata kata;
     private boolean spawnedKata = false;
     private boolean hapus = false;
+    private GreenfootSound suara = new GreenfootSound("explosion.wav");
     
     // method untuk membandingkan sebuah kata
     @Override
@@ -61,6 +62,7 @@ public class Gajah extends Actor implements DapatCaption
                 getWorld().showText("GAME OVER", getWorld().getWidth()/2, getWorld().getHeight()/2);
                 Greenfoot.stop();
             }  
+            suara.play();
             world.removeObject(kata);
             world.removeObject(this);
             return;
@@ -72,6 +74,7 @@ public class Gajah extends Actor implements DapatCaption
         if (p != null && p instanceof Peluru && hapus == true) {
             MyWorld world = (MyWorld)getWorld();
             world.setSkor(1000);
+            suara.play();
             getWorld().removeObject(p); // hapus peluru
             getWorld().removeObject(kata); // hapus kata
             getWorld().removeObject(this); // hapus gajah ini

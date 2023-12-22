@@ -6,6 +6,7 @@ public class Peluru extends Actor
     private double y;
     private double moveX;
     private double moveY;
+    private GreenfootSound suara = new GreenfootSound("shoot.wav");
     
     public Peluru(int startX, int startY, double moveX, double moveY) {
         setLocation(startX, startY);
@@ -13,6 +14,7 @@ public class Peluru extends Actor
         y = startY;
         this.moveX = moveX;
         this.moveY = moveY;
+        suara.play();
     }
     
     public void act()

@@ -36,10 +36,14 @@ public class MyWorld extends World
             "Pena", "Baja", "Raja", "Tapi", "Roda", "Awan", "Aksi", "Padi", "Baja", "Kopi"
     };
     
+    GreenfootSound suaraLatarBelakang = new GreenfootSound("back.wav");
+    
     public MyWorld()
     {    
         super(1280, 720, 1);
         addObject(new Rocket(), 64, getHeight() / 2);
         displayStatus();
+        suaraLatarBelakang.setVolume(20);
+        suaraLatarBelakang.playLoop();
     }
 }
